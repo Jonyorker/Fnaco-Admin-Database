@@ -20,15 +20,31 @@ class Membership extends CI_Controller {
 	 */
 	public function index()
 	{
-		// $this->load->view('welcome_message');
 		$data['main_content'] = 'welcome_view';
         $this->load->view('template/body_view', $data);
 	}
 
 	public function create()
 	{
-		// $this->load->view('welcome_message');
-		$data['main_content'] = 'welcome_view';
+		$data['main_content'] = 'membership/membership_index_view';
+        $this->load->view('template/body_view', $data);
+	}
+
+	public function store()
+	{
+
+		$salutations = $this->input->post('salutations');
+		$first_name = $this->input->post('first_name');
+    	$last_name = $this->input->post('last_name');
+
+    	$display_name = $salutations.' '.$first_name.' '.$last_name;
+    	$timestamp = date('Y-m-d H:i:s');
+
+    	$data = array('display_name' => $display_name, 'user_registered' => $timestamp);
+
+		$this->Membership_model->create($data);
+
+		$data['main_content'] = 'membership/membership_index_view';
         $this->load->view('template/body_view', $data);
 	}
 
