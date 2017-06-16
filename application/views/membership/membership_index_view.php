@@ -5,6 +5,8 @@
       </div>
       <div class="row">
 	      <div class="col-md-6 col-sm-12 well">
+	      <?php $test = 'abc';?>
+	      <?php echo $$test; ?>
 	      <h2 class="text-center">Create Member</h2>
 	      	
 			 

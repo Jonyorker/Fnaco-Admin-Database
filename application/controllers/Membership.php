@@ -50,8 +50,11 @@ class Membership extends CI_Controller {
 
 	public function Retrieve()
 	{
+		// Grabbing ID from form
 		$id = $this->input->post('id');
+		// Getting info from users table
 		$data['query'] = $this->Membership_model->retrieve_from_users($id);
+		// Getting info from usermeta table
 		$data['address'] = $this->Membership_model->retrieve_from_usermeta($id, 'Address');
 		$data['city'] = $this->Membership_model->retrieve_from_usermeta($id, 'City');
 		$data['postal'] = $this->Membership_model->retrieve_from_usermeta($id, 'Postal');
@@ -64,14 +67,24 @@ class Membership extends CI_Controller {
         $this->load->view('template/body_view', $data);
 	}
 
-	public function Update()
+	public function Update($id)
 	{
+		// Get values from post
+		$data['Address'] = $this->input->post('address');
+		$data['City'] = $this->input->post('city');
+
+		// Send to model to update
+		$this->Membership_model->update_usermeta($data, $id);
+
+		// Redirect to membershin index
+		$data['main_content'] = 'membership/membership_index_view';
+        $this->load->view('template/body_view', $data);
 
 	}
 
-	public function Destroy()
+	public function Destroy($id)
 	{
-
+		$this->Membership_model->update_usermeta($data, $id);
 	}
 
 }

@@ -7,7 +7,7 @@
 	      <h2 class="text-center">Personal Information</h2>
 	      	
 			 
-			<?php echo form_open('Membership/Update',array('class' => 'form-horizontal')); ?>
+			<?php echo form_open('Membership/Update/'.$query['ID'],array('class' => 'form-horizontal')); ?>
 			<div class="form-group">
 			<?php echo form_label('Display Name', 'display_name', array('class' => 'col-md-3')); ?>
 			<div class="col-md-9">
