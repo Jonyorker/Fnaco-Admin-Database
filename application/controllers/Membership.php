@@ -24,13 +24,13 @@ class Membership extends CI_Controller {
         $this->load->view('template/body_view', $data);
 	}
 
-	public function create()
+	public function Create()
 	{
 		$data['main_content'] = 'membership/membership_index_view';
         $this->load->view('template/body_view', $data);
 	}
 
-	public function store()
+	public function Store()
 	{
 
 		$salutations = $this->input->post('salutations');
@@ -50,7 +50,18 @@ class Membership extends CI_Controller {
 
 	public function Retrieve()
 	{
+		$id = $this->input->post('id');
+		$data['query'] = $this->Membership_model->retrieve_from_users($id);
+		$data['address'] = $this->Membership_model->retrieve_from_usermeta($id, 'Address');
+		$data['city'] = $this->Membership_model->retrieve_from_usermeta($id, 'City');
+		$data['postal'] = $this->Membership_model->retrieve_from_usermeta($id, 'Postal');
+		$data['email'] = $this->Membership_model->retrieve_from_usermeta($id, 'billing_email');
+		$data['phone_1'] = $this->Membership_model->retrieve_from_usermeta($id, 'Phone 1');
+		$data['phone_2'] = $this->Membership_model->retrieve_from_usermeta($id, 'Phone 2');
+		$data['language'] = $this->Membership_model->retrieve_from_usermeta($id, 'Language');
 
+		$data['main_content'] = 'membership/update_view';
+        $this->load->view('template/body_view', $data);
 	}
 
 	public function Update()
