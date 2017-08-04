@@ -5,8 +5,6 @@
       </div>
       <div class="row">
 	      <div class="col-md-6 col-sm-12 well">
-	      <?php $test = 'abc';?>
-	      <?php echo $$test; ?>
 	      <h2 class="text-center">Create Member</h2>
 	      	
 			 
@@ -47,19 +45,19 @@
 			</div>
 			</div>
 			<div class="form-group">
-			<?php echo form_submit('submit', 'Create Member', array('class' => 'btn btn-default pull-right')); ?>
+			<?php echo form_submit('submit', 'Update Member', array('class' => 'btn btn-default pull-right')); ?>
 			<?php echo form_close(); ?>
 			</div>
 			
 	      </div>
 	      </div>
-      <div class="row">
+<!--       <div class="row">
 	      <div class="col-md-6 col-sm-12 well">
 	      <h2 class="text-center">View Member</h2>
 	      </div>
 	      <div class="col-md-6 well">
 	      <h2 class="text-center">Delete Member</h2>
 	      </div>
-      </div>
+      </div> -->
 
     </div>

@@ -42,9 +42,13 @@ class Membership extends CI_Controller {
 
     	$data = array('display_name' => $display_name, 'user_registered' => $timestamp);
 
-		$this->Membership_model->create($data);
+		$id = $this->Membership_model->create($data);
 
-		$data['main_content'] = 'membership/membership_index_view';
+		// Getting info
+		$data = $this->Retrive_Usermeta($id);
+
+		// Display info
+		$data['main_content'] = 'membership/update_view';
         $this->load->view('template/body_view', $data);
 	}
 
@@ -52,9 +56,18 @@ class Membership extends CI_Controller {
 	{
 		// Grabbing ID from form
 		$id = $this->input->post('id');
-		// Getting info from users table
+
+		// Getting info
+		$data = $this->Retrive_Usermeta($id);
+
+		// Display info
+		$data['main_content'] = 'membership/update_view';
+        $this->load->view('template/body_view', $data);
+	}
+
+	public function Retrive_Usermeta($id)
+	{
 		$data['query'] = $this->Membership_model->retrieve_from_users($id);
-		// Getting info from usermeta table
 		$data['address'] = $this->Membership_model->retrieve_from_usermeta($id, 'Address');
 		$data['city'] = $this->Membership_model->retrieve_from_usermeta($id, 'City');
 		$data['postal'] = $this->Membership_model->retrieve_from_usermeta($id, 'Postal');
@@ -63,20 +76,11 @@ class Membership extends CI_Controller {
 		$data['phone_2'] = $this->Membership_model->retrieve_from_usermeta($id, 'Phone 2');
 		$data['language'] = $this->Membership_model->retrieve_from_usermeta($id, 'Language');
 
-		$data['main_content'] = 'membership/update_view';
-        $this->load->view('template/body_view', $data);
+		return $data;
 	}
 
-	public function Update($id)
+	public function Update()
 	{
-		// Get values from post
-		$data['Address'] = $this->input->post('address');
-		$data['City'] = $this->input->post('city');
-
-		// Send to model to update
-		$this->Membership_model->update_usermeta($data, $id);
-
-		// Redirect to membershin index
 		$data['main_content'] = 'membership/membership_index_view';
         $this->load->view('template/body_view', $data);
 

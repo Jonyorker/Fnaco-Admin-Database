@@ -11,8 +11,8 @@
 	      <ul class="list-group">
 	      	<li class="list-group-item"><?php echo anchor('Membership/create', 'Add Member'); ?></li>
 	      	<li class="list-group-item"><?php echo anchor('Membership/Update', 'Update Member'); ?></li>
-	      	<li class="list-group-item"><?php echo anchor('Membership/Retrieve', 'View Member'); ?></li>
-	      	<li class="list-group-item"><?php echo anchor('Membership/Destroy', 'Remove Member'); ?></li>
+<!-- 	      	<li class="list-group-item"><?php echo anchor('Membership/Retrieve', 'View Member'); ?></li>
+	      	<li class="list-group-item"><?php echo anchor('Membership/Destroy', 'Remove Member'); ?></li> -->
       		</ul>
 	      </div>
 	      <div class="col-md-6 well">

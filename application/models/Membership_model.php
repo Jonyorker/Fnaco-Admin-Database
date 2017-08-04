@@ -8,7 +8,8 @@ class Membership_model extends CI_Model
 	function create($data)
 	{
 		$this->db->insert('wp_kapn_users', $data);
-		return;
+		$new_id = $this->db->insert_id();
+		return $new_id;
 	}
 	
 	function retrieve_from_users($id)
